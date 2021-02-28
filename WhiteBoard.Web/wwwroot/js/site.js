@@ -14,7 +14,7 @@ var x = "black",
     y = 2;
 
 function init() {
-    canvas = document.getElementById('can');
+    canvas = document.getElementById('canvas');
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
     ctx = canvas.getContext("2d");
@@ -45,19 +45,16 @@ function draw() {
     ctx.closePath();
 }
 
-function erase() {
-    var m = confirm("Want to clear");
-    if (m) {
-        ctx.clearRect(0, 0, w, h);
-        document.getElementById("canvasimg").style.display = "none";
-    }
+function clearCanvas() {
+    const context = canvas.getContext('2d');
+    context.clearRect(0, 0, canvas.width, canvas.height);
 }
 
 function save() {
-    document.getElementById("canvasimg").style.border = "2px solid";
+    console.log("ss");
     var dataURL = canvas.toDataURL();
-    document.getElementById("canvasimg").src = dataURL;
-    document.getElementById("canvasimg").style.display = "inline";
+    console.log(dataURL);
+    //document.getElementById("canvasimg").src = dataURL;
 }
 
 function findxy(res, e) {

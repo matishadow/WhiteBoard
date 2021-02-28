@@ -18,10 +18,10 @@
 </head>
 <body>
 
-<div class="body-content">
     @RenderBody()
+    <input type="button" value="save" id="btn-save" size="100" onclick="save()" style="position:absolute;height: 50px; width: 100px">
+    <input type="button" value="clear" id="btn-clear" size="100" onclick="clearCanvas()" style="position:absolute;height: 50px; width: 100px; margin-left: 100px">
     <hr/>
-</div>
 
 <environment include="Development">
     <script src="~/lib/jquery/dist/jquery.js"></script>
