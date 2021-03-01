@@ -53,8 +53,18 @@ function clearCanvas() {
 function save() {
     console.log("ss");
     var dataURL = canvas.toDataURL();
-    console.log(dataURL);
-    //document.getElementById("canvasimg").src = dataURL;
+
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "/canvas", true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+
+    var json = JSON.stringify({
+        Data: dataURL
+    });
+    console.log(json);
+
+
+    xhr.send(json);
 }
 
 function findxy(res, e) {
