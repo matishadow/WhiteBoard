@@ -32,6 +32,7 @@ namespace WhiteBoard.Web.Controllers
             {
                 var collection = db.GetCollection<Canvas>(nameof(Canvas));
 
+                collection.DeleteAll();
                 collection.Insert(canvas);
 
                 return Ok();

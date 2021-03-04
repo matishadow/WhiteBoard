@@ -21,6 +21,8 @@ function init() {
     w = canvas.width;
     h = canvas.height;
 
+    var image = new Image();
+
     canvas.addEventListener("mousemove", function (e) {
         findxy('move', e)
     }, false);
@@ -33,6 +35,19 @@ function init() {
     canvas.addEventListener("mouseout", function (e) {
         findxy('out', e)
     }, false);
+
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.onreadystatechange = function() {
+        if (xmlHttp.readyState === 4 && xmlHttp.status === 200)
+        {
+            image.onload = function() {
+                ctx.drawImage(image, 0, 0);
+            };
+            image.src = xmlHttp.responseText;
+        }
+    }
+    xmlHttp.open("GET", "/canvas", true); // true for asynchronous
+    xmlHttp.send(null);
 }
 
 function draw() {
